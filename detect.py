@@ -13,12 +13,11 @@ while cap.isOpened():
 
     if bboxInfo:
     # print(bboxInfo)
+        landmarks_string = ''
         for lm in landmarks:
-            landmarks_string = ''
-
-            # print(lm)
             landmarks_string += f'{lm[1]},{img.shape[0]-lm[2]},{lm[3]},'
-            pose_lst.append(landmarks_string)
+        pose_lst.append(landmarks_string)
+        print(len(landmarks_string))
             # print(img.shape[0])
 
     with open('points.txt','w') as f:
@@ -27,7 +26,7 @@ while cap.isOpened():
     cv2.imshow('window',img)
     # print(landmarks)
 
-    if cv2.waitKey(10) & 0xFF == ord('x'):
+    if cv2.waitKey(1) & 0xFF == ord('x'):
         break
 cap.release()
 cv2.destroyAllWindows()
